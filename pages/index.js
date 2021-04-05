@@ -6,19 +6,14 @@ import { useState } from 'react'
 import Header from '../components/Header'
 
 export default function Home() {
-	const [searchLine, setSearchLine] = useState('')
+	const [videoList, setVideolList] = useState([])
 
-	const onSearchButton = () => {
-		alert(`${searchLine}\nyou pressed search button`)
+	const onButtonClick = () => {
+		//onSearch('')
 	}
 
-	const onFavoritesButton = () => {
-		alert(`you pressed favorites button`)
-	}
-
-	const handleFields = (event) => {
-		setSearchLine(event.target.value)
-		console.log(searchLine)
+	const onLoginClick = () => {
+		getVideoData(setChannelList, 'jeensoff')
 	}
 
 	return (
@@ -28,9 +23,17 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Header style={styles.header}></Header>
+			<Header style={styles.header} videoList={setVideolList}></Header>
 
-			<main className={styles.main}></main>
+			<main className={styles.main}>
+				{channelList.map()}
+				<img
+					width="100px"
+					height="100"
+					src="https://static-cdn.jtvnw.net/cf_vods/d2nvs31859zcd8/d06d40fff2b26ee4ae1a_buster_41268766541_1617381403//thumb/thumb0-1000x1000.jpg"
+					alt="img"
+				></img>
+			</main>
 		</div>
 	)
 }
