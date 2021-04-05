@@ -4,6 +4,7 @@ import styles from '../css/Home.module.css'
 import { useState } from 'react'
 
 import Header from '../components/Header'
+import VideoItem from '../components/VideoItem'
 
 export default function Home() {
 	const [videoList, setVideolList] = useState([])
@@ -23,10 +24,13 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Header style={styles.header} videoList={setVideolList}></Header>
+			<Header style={styles.header} setVideoList={setVideolList}></Header>
 
-			<main className={styles.main}>
-				{channelList.map()}
+			<main className={styles['video-container']}>
+				{videoList.map((videoObj) => (
+					<VideoItem videoParams={videoObj} />
+				))}
+				{console.log(videoList.length)}
 				<img
 					width="100px"
 					height="100"

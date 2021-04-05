@@ -10,7 +10,6 @@ export default function Header(props) {
 	const [searchLine, setSearchLine] = useState('')
 
 	const onSearchButton = () => {
-		alert(`${searchLine}\nyou pressed search button`)
 		getVideoData(setVideoList, searchLine)
 	}
 

@@ -7,13 +7,14 @@
   align-items: center;
 }
 
-.main {
-  padding: 5rem 0;
-  flex: 1;
+.video-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-width: 800px;
+  margin-top: 3rem;
 }
 
 /*
