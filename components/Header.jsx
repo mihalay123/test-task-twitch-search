@@ -10,7 +10,7 @@ export default function Header(props) {
 	const [searchLine, setSearchLine] = useState('')
 
 	const onSearchButton = () => {
-		getVideoData(setVideoList, searchLine)
+		getVideoData(setVideoList, searchLine) //second arg is searchLine
 	}
 
 	const onFavoritesButton = () => {

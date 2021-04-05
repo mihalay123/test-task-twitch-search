@@ -7,7 +7,13 @@
   align-items: center;
 }
 
-.video-container {
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,6 +21,34 @@
   flex-direction: column;
   max-width: 800px;
   margin-top: 3rem;
+}
+
+.video-box {
+  padding: 5rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-box-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.video-box-item {
+  max-width: 200px;
+}
+
+.video-box-item a img:hover,
+.video-box-item a img:focus,
+.video-box-item a img:active {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.video-box-item-empty {
+  background-color: #0070f3;
 }
 
 /*
@@ -54,12 +88,6 @@
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
 */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .grid {
   display: flex;
   align-items: center;
@@ -99,17 +127,5 @@
   font-size: 1.25rem;
   line-height: 1.5;
 }
-
-/*
-.logo {
-  height: 1em;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
-} */
 
 /*# sourceMappingURL=Home.module.css.map */
