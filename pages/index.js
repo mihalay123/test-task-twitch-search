@@ -8,6 +8,7 @@ import VideoBox from '../components/VideoBox'
 
 export default function Home() {
 	const [videoList, setVideolList] = useState([])
+	const [cursor, setCursor] = useState('')
 
 	const onButtonClick = () => {
 		//onSearch('')
@@ -24,7 +25,11 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Header style={styles.header} setVideoList={setVideolList}></Header>
+			<Header
+				style={styles.header}
+				setVideoList={setVideolList}
+				setCursor={setCursor}
+			></Header>
 
 			<main className={styles.main}>
 				<VideoBox videoList={videoList} styles={styles} />

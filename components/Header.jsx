@@ -6,11 +6,11 @@ import Button from './Button'
 import { getVideoData } from '../pages/api/twitch'
 
 export default function Header(props) {
-	const { setVideoList, style } = props
+	const { setVideoList, setCursor, style } = props
 	const [searchLine, setSearchLine] = useState('')
 
 	const onSearchButton = () => {
-		getVideoData(setVideoList, searchLine) //second arg is searchLine
+		getVideoData(setVideoList, setCursor, 'jeensoff')
 	}
 
 	const onFavoritesButton = () => {

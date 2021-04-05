@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+import { ITEMS_PER_PAGE } from '../../constants/videoConstants'
+
 const TWITCH_CLIENT_ID = 'bfk90li6afywwh5ik7uldi6vgc7jdk' //temp
 const TWITCH_CLIENT_SECRET = 'rh1ihn7halpl3y57m0ennmoya1v13c'
 const TWITCH_ACCESS_TOKEN = 'Bearer pjq1pxeff0vfg2mq0kaz8idm3x8r74'
@@ -21,7 +23,7 @@ const getChannelID = (channelName) => {
 		.catch((err) => console.log(err))
 }
 
-export const getVideoData = async (setVideolList, channelName) => {
+export const getVideoData = async (setVideolList, setCursor, channelName) => {
 	try {
 		const channelID = await getChannelID(channelName)
 		if (channelID === undefined)
@@ -30,6 +32,7 @@ export const getVideoData = async (setVideolList, channelName) => {
 			.get('https://api.twitch.tv/helix/videos', {
 				params: {
 					user_id: channelID,
+					first: ITEMS_PER_PAGE,
 				},
 				headers: {
 					'Client-ID': TWITCH_CLIENT_ID,
@@ -37,6 +40,7 @@ export const getVideoData = async (setVideolList, channelName) => {
 				},
 			})
 			.then((response) => {
+				setCursor(response.data.pagination.cursor)
 				setVideolList(response.data.data)
 			})
 			.catch((err) => console.log(err))
