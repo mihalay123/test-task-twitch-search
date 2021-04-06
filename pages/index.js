@@ -1,22 +1,29 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../css/Home.module.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import Header from '../components/Header'
 import VideoBox from '../components/VideoBox'
+import Pagination from '../components/Pagination'
+
+import { getVideoData } from './api/twitch'
 
 export default function Home() {
 	const [videoList, setVideolList] = useState([])
 	const [cursor, setCursor] = useState('')
+	const [page, setPage] = useState({ value: 1 })
+	const [searchLine, setSearchLine] = useState('')
 
-	const onButtonClick = () => {
-		//onSearch('')
-	}
-
-	const onLoginClick = () => {
-		getVideoData(setChannelList, 'jeensoff')
-	}
+	useEffect(() => {
+		getVideoData({
+			setVideolList,
+			setCursor,
+			cursor,
+			page,
+			channelName: searchLine,
+		})
+	}, [page, searchLine])
 
 	return (
 		<div className={styles.container}>
@@ -26,13 +33,14 @@ export default function Home() {
 			</Head>
 
 			<Header
-				style={styles.header}
-				setVideoList={setVideolList}
-				setCursor={setCursor}
+				styles={styles}
+				setSearchLine={setSearchLine}
+				setPage={setPage}
 			></Header>
 
 			<main className={styles.main}>
 				<VideoBox videoList={videoList} styles={styles} />
+				<Pagination setPage={setPage} styles={styles} />
 				<img
 					width="100px"
 					height="100"

@@ -1,9 +1,8 @@
 import React from 'react'
 
-export default function TextField({ handler, text }) {
+export default function TextField({ handler }) {
 	return (
 		<div>
-			<p>{text}</p>
 			<input onChange={handler}></input>
 		</div>
 	)

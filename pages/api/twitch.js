@@ -6,7 +6,7 @@ const TWITCH_CLIENT_ID = 'bfk90li6afywwh5ik7uldi6vgc7jdk' //temp
 const TWITCH_CLIENT_SECRET = 'rh1ihn7halpl3y57m0ennmoya1v13c'
 const TWITCH_ACCESS_TOKEN = 'Bearer pjq1pxeff0vfg2mq0kaz8idm3x8r74'
 
-const getChannelID = (channelName) => {
+const getChannelID = (channelName = '') => {
 	return axios
 		.get('https://api.twitch.tv/helix/users', {
 			params: {
@@ -23,7 +23,13 @@ const getChannelID = (channelName) => {
 		.catch((err) => console.log(err))
 }
 
-export const getVideoData = async (setVideolList, setCursor, channelName) => {
+export const getVideoData = async ({
+	setVideolList,
+	setCursor,
+	cursor,
+	page,
+	channelName,
+}) => {
 	try {
 		const channelID = await getChannelID(channelName)
 		if (channelID === undefined)
@@ -33,6 +39,7 @@ export const getVideoData = async (setVideolList, setCursor, channelName) => {
 				params: {
 					user_id: channelID,
 					first: ITEMS_PER_PAGE,
+					[page.dirrection]: cursor,
 				},
 				headers: {
 					'Client-ID': TWITCH_CLIENT_ID,
@@ -45,6 +52,6 @@ export const getVideoData = async (setVideolList, setCursor, channelName) => {
 			})
 			.catch((err) => console.log(err))
 	} catch (err) {
-		if (err.name === 'Error') alert(err)
+		if (err.name === 'Error') console.log(err)
 	}
 }

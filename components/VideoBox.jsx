@@ -1,43 +1,14 @@
 import _ from 'lodash'
 
 import VideoItem from './VideoItem'
-import { ITEMS_PER_PAGE, ITEMS_IN_ROW } from '../constants/videoConstants'
-
-const addEmptyBlocks = (number) => {}
-
-// export default function VideoBox({ videoList = [], styles }) {
-// 	const emptyBlocks = ITEMS_PER_PAGE % videoList.length || 0
-
-// 	console.log('HAHDHASHD', emptyBlocks)
-// 	const emptyBlocksArr = [...Array(emptyBlocks).keys()]
-// 	//const emptyBlocksArr = [1, 2]
-// 	console.log(emptyBlocksArr)
-// 	const chunkedVideoList = _.chunk(videoList, ITEMS_IN_ROW)
-// 	console.log(chunkedVideoList)
-// 	return (
-// 		<div className={styles['video-box']}>
-// 			{chunkedVideoList.map((row, index) => (
-// 				<div key={index} className={styles['video-box-row']}>
-// 					{row.map((videoObj) => (
-// 						<VideoItem
-// 							videoParams={videoObj}
-// 							key={videoObj.id}
-// 							style={styles['video-box-item']}
-// 						/>
-// 					))}
-// 				</div>
-// 			))}
-// 			{emptyBlocksArr.map((current, index) => (
-// 				<div className={styles['video-box-item-empty']} key={index}></div>
-// 			))}
-// 		</div>
-// 	)
-// }
+import { ITEMS_PER_PAGE } from '../constants/videoConstants'
 
 export default function VideoBox({ videoList = [], styles }) {
-	const emptyBlocks = ITEMS_PER_PAGE % videoList.length || 0
+	const emptyBlocks =
+		videoList.length === 0 ? 0 : ITEMS_PER_PAGE - videoList.length
 
-	console.log('HAHDHASHD', emptyBlocks)
+	console.log('num of video on the page', videoList.length)
+	console.log('num of empty blocks', emptyBlocks)
 	const emptyBlocksArr = [...Array(emptyBlocks).keys()]
 
 	return (
