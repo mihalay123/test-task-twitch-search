@@ -1,9 +1,11 @@
 import _ from 'lodash'
 
+import styles from '../css/Home.module.css'
 import VideoItem from './VideoItem'
 import { ITEMS_PER_PAGE } from '../constants/videoConstants'
 
-export default function VideoBox({ videoList = [], styles }) {
+export default function VideoBox(props) {
+	const { videoList = [] } = props
 	const emptyBlocks =
 		videoList.length === 0 ? 0 : ITEMS_PER_PAGE - videoList.length
 

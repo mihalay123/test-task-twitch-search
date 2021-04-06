@@ -1,7 +1,9 @@
 import Button from './Button'
 
+import styles from '../css/Home.module.css'
+
 export default function Pagination(props) {
-	const { setPage, styles } = props
+	const { setPage } = props
 
 	const nextPage = () => {
 		setPage(({ value }) => ({ value: value + 1, dirrection: 'after' }))

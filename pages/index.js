@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import styles from '../css/Home.module.css'
 import { useState, useEffect } from 'react'
 
+import styles from '../css/Home.module.css'
 import Header from '../components/Header'
 import VideoBox from '../components/VideoBox'
 import Pagination from '../components/Pagination'
@@ -32,15 +32,11 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Header
-				styles={styles}
-				setSearchLine={setSearchLine}
-				setPage={setPage}
-			></Header>
+			<Header setSearchLine={setSearchLine} setPage={setPage}></Header>
 
 			<main className={styles.main}>
-				<VideoBox videoList={videoList} styles={styles} />
-				<Pagination setPage={setPage} styles={styles} />
+				<VideoBox videoList={videoList} />
+				<Pagination setPage={setPage} />
 				<img
 					width="100px"
 					height="100"
