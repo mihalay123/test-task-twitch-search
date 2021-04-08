@@ -1,6 +1,8 @@
+
+
 .container {
   min-height: 100vh;
-  padding: 0 0.5rem;
+  //padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   //justify-content: center;
@@ -14,7 +16,60 @@
   flex-direction: row;
   //flex-wrap: nowrap;
   //max-width: 800px;
+  width: 100%;
+  background-color: rgb(24, 24, 27);
+  border: 1px solid #6e6e6e;
+  border-radius: 5px;
 }
+
+%header-element {
+  margin: 10px;
+  height: 25px;
+}
+
+%primary-font {
+  font-family: Inter, Roobert, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+
+.header-text-field-label {
+  @extend %header-element;
+  @extend %primary-font;
+  color: #6e6e6e;
+  line-height: 25px;
+}
+
+.header-text-field {
+  @extend %header-element;
+  background-color: white;
+  border: 1px solid #6e6e6e;
+  border-radius: 4px;
+  width: 300px;
+  height: 27px;
+}
+
+.header-button {
+  @extend %header-element;
+  @extend %primary-font;
+  background-color: rgb(145, 71, 255);
+  color: white;
+  border: 0px;
+  border-radius: 4px;
+  height: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  &:hover {
+    background-color: rgb(119, 44, 232);
+    color: white;
+    
+  }
+}
+
+
+
+
 
 .main {
   display: flex;
@@ -22,14 +77,17 @@
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: column;
-  width: 1000px;
-  max-width: 1000px;
   margin-top: 3rem;
 }
 
+$height: 150px;
+
 %video-item {
+  //height: $height;
+  height: 150px;
+  width: $height * 1.8;
   max-width: 300px;
-  margin: 10px;
+  margin: 15px;
 }
 
 .video-box {
@@ -39,7 +97,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  max-width: 1000px;
+  max-width: 70%;
   flex-wrap: wrap;
   &-item {
     @extend %video-item;
@@ -48,14 +106,24 @@
         background-color: #0070f3;
         border: 2px solid red;
         
-        width: 200px - 4;
-        height: 100px - 4;
+      
     }
   }
 }
 
 .pagination {
   border: 2px solid gray;
+  display: flex;
+  flex-direction: row;
+}
+
+.button-pagination {
+  border: 1px solid blue;
+  width: 50px;
+}
+
+.button-favorite {
+  border: 1px solid green
 }
 
 // .video-box-row {

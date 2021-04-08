@@ -7,23 +7,25 @@ import Header from '../components/Header'
 import VideoBox from '../components/VideoBox'
 import Pagination from '../components/Pagination'
 
-import { getVideoData } from './api/twitch'
+import { getVideoDataByChannelName } from './api/twitch'
 
 export default function Home() {
-	const [videoList, setVideolList] = useState([])
+	const [videoList, setVideoList] = useState([])
 	const [cursor, setCursor] = useState('')
 	const [page, setPage] = useState({ value: 1 })
 	const [searchLine, setSearchLine] = useState('')
+	const [isSearchButtonClicked, setSearchButtonClicked] = useState(false)
 
 	useEffect(() => {
-		getVideoData({
-			setVideolList,
+		getVideoDataByChannelName({
+			setVideoList,
 			setCursor,
 			cursor,
 			page,
 			channelName: searchLine,
 		})
-	}, [page, searchLine])
+		setSearchButtonClicked(false)
+	}, [page, isSearchButtonClicked])
 
 	return (
 		<div className={styles.container}>
@@ -32,18 +34,14 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Header setSearchLine={setSearchLine} setPage={setPage}></Header>
+			<Header
+				setSearchLine={setSearchLine}
+				setPage={setPage}
+				setSearchButtonClicked={setSearchButtonClicked}
+			></Header>
 
-			<main className={styles.main}>
-				<VideoBox videoList={videoList} />
-				<Pagination setPage={setPage} />
-				<img
-					width="100px"
-					height="100"
-					src="https://static-cdn.jtvnw.net/cf_vods/d2nvs31859zcd8/d06d40fff2b26ee4ae1a_buster_41268766541_1617381403//thumb/thumb0-1000x1000.jpg"
-					alt="img"
-				></img>
-			</main>
+			<VideoBox videoList={videoList} />
+			<Pagination setPage={setPage} />
 		</div>
 	)
 }

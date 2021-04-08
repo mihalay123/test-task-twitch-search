@@ -9,13 +9,11 @@ import { getVideoData } from '../pages/api/twitch'
 import Link from 'next/link'
 
 export default function Header(props) {
-	const { setSearchLine, setPage } = props
-	const [fieldValue, setFieldValue] = useState('')
-
+	const { setSearchLine, setPage, setSearchButtonClicked } = props
 	const router = useRouter()
 
 	const onSearchButton = () => {
-		setSearchLine(fieldValue)
+		setSearchButtonClicked(true)
 		setPage({ value: 1, dirrection: '' })
 	}
 
@@ -24,15 +22,25 @@ export default function Header(props) {
 	}
 
 	const handleFields = (event) => {
-		setFieldValue(event.target.value)
+		setSearchLine(event.target.value)
 	}
 
 	return (
 		<div className={styles.header}>
-			<p>Введите название канала</p>
-			<TextField handler={handleFields} />
-			<Button text="Search" onClickFunction={onSearchButton} />
-			<Button text="Favorites" onClickFunction={onFavoritesButton} />
+			<p className={styles['header-text-field-label']}>
+				Введите название канала
+			</p>
+			<TextField handler={handleFields} style={styles['header-text-field']} />
+			<Button
+				text="Поиск"
+				onClickFunction={onSearchButton}
+				style={styles['header-button']}
+			/>
+			<Button
+				text="Избранное"
+				onClickFunction={onFavoritesButton}
+				style={styles['header-button']}
+			/>
 		</div>
 	)
 }

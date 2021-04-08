@@ -1,9 +1,5 @@
 import React from 'react'
 
-export default function TextField({ handler }) {
-	return (
-		<div>
-			<input onChange={handler}></input>
-		</div>
-	)
+export default function TextField({ handler, style }) {
+	return <input onChange={handler} className={style}></input>
 }

@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function Button({ onClickFunction, text }) {
+export default function Button(props) {
+	const { onClickFunction, text, style } = props
 	return (
-		<div>
-			<button onClick={onClickFunction}>{text}</button>
-		</div>
+		<button onClick={onClickFunction} className={style}>
+			{text}
+		</button>
 	)
 }

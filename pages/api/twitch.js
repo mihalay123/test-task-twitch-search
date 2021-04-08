@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 import { ITEMS_PER_PAGE } from '../../constants/videoConstants'
+import { getFavoriteList } from './favorutesApi'
 
 const TWITCH_CLIENT_ID = 'bfk90li6afywwh5ik7uldi6vgc7jdk' //temp
 const TWITCH_CLIENT_SECRET = 'rh1ihn7halpl3y57m0ennmoya1v13c'
@@ -23,8 +24,8 @@ const getChannelID = (channelName = '') => {
 		.catch((err) => console.log(err))
 }
 
-export const getVideoData = async ({
-	setVideolList,
+export const getVideoDataByChannelName = async ({
+	setVideoList,
 	setCursor,
 	cursor,
 	page,
@@ -48,10 +49,29 @@ export const getVideoData = async ({
 			})
 			.then((response) => {
 				setCursor(response.data.pagination.cursor)
-				setVideolList(response.data.data)
+				setVideoList(response.data.data)
 			})
 			.catch((err) => console.log(err))
 	} catch (err) {
 		if (err.name === 'Error') console.log(err)
 	}
+}
+
+export const getVideoDataByVideoId = (setVideoList) => {
+	const idList = getFavoriteList()
+	const idsString = idList.join(',')
+
+	axios
+		.get('https://api.twitch.tv/helix/videos', {
+			params: {
+				id: idsString,
+			},
+			headers: {
+				'Client-ID': TWITCH_CLIENT_ID,
+				Authorization: TWITCH_ACCESS_TOKEN,
+			},
+		})
+		.then((response) => {
+			setVideoList(response.data.data)
+		})
 }

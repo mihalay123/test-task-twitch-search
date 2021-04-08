@@ -15,8 +15,16 @@ export default function Pagination(props) {
 
 	return (
 		<div className={styles.pagination}>
-			<Button text="<" onClickFunction={previousPage} />
-			<Button text=">" onClickFunction={nextPage} />
+			<Button
+				text="<"
+				onClickFunction={previousPage}
+				style={styles['button-pagination']}
+			/>
+			<Button
+				text=">"
+				onClickFunction={nextPage}
+				style={styles['button-pagination']}
+			/>
 		</div>
 	)
 }
