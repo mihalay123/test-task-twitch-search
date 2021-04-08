@@ -9,8 +9,6 @@ export default function VideoBox(props) {
 	const emptyBlocks =
 		videoList.length === 0 ? 0 : ITEMS_PER_PAGE - videoList.length
 
-	console.log('num of video on the page', videoList.length)
-	console.log('num of empty blocks', emptyBlocks)
 	const emptyBlocksArr = [...Array(emptyBlocks).keys()]
 
 	return (
@@ -22,9 +20,9 @@ export default function VideoBox(props) {
 					style={styles['video-box-item']}
 				/>
 			))}
-			{emptyBlocksArr.map((current, index) => (
+			{/* {emptyBlocksArr.map((current, index) => (
 				<div className={styles['video-box-item-empty']} key={index}></div>
-			))}
+			))} */}
 		</div>
 	)
 }

@@ -1,5 +1,11 @@
 import React from 'react'
 
-export default function TextField({ handler, style }) {
-	return <input onChange={handler} className={style}></input>
+export default function TextField({ handler, style, placeholder }) {
+	return (
+		<input
+			onChange={handler}
+			className={style}
+			placeholder={placeholder}
+		></input>
+	)
 }

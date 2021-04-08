@@ -35,11 +35,11 @@ export default function VideoItem(props) {
 			<a href={videoParams.url}>
 				<img src={imgURL} alt={videoParams.title} />
 			</a>
-			<Button
+			{/* <Button
 				onClickFunction={onFavoriteButton}
 				style={styles['button-favorite']}
 				text={buttonText}
-			/>
+			/> */}
 		</div>
 	)
 }

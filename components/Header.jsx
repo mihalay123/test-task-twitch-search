@@ -27,10 +27,11 @@ export default function Header(props) {
 
 	return (
 		<div className={styles.header}>
-			<p className={styles['header-text-field-label']}>
-				Введите название канала
-			</p>
-			<TextField handler={handleFields} style={styles['header-text-field']} />
+			<TextField
+				handler={handleFields}
+				style={styles['header-text-field']}
+				placeholder="Введите название канала"
+			/>
 			<Button
 				text="Поиск"
 				onClickFunction={onSearchButton}
@@ -40,7 +41,7 @@ export default function Header(props) {
 				text="Избранное"
 				onClickFunction={onFavoritesButton}
 				style={styles['header-button']}
-			/>
+			></Button>
 		</div>
 	)
 }

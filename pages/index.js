@@ -17,6 +17,11 @@ export default function Home() {
 	const [isSearchButtonClicked, setSearchButtonClicked] = useState(false)
 
 	useEffect(() => {
+		// console.log('page', page)
+		// console.log('cursor', cursor)
+		// console.log('videoList', videoList)
+		// console.log('LAST videoList', videoList[videoList.length - 1]?.id)
+
 		getVideoDataByChannelName({
 			setVideoList,
 			setCursor,

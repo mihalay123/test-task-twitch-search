@@ -31,6 +31,8 @@ export const getVideoDataByChannelName = async ({
 	page,
 	channelName,
 }) => {
+	console.log('page', page)
+	console.log('cursor', cursor)
 	try {
 		const channelID = await getChannelID(channelName)
 		if (channelID === undefined)
@@ -49,6 +51,11 @@ export const getVideoDataByChannelName = async ({
 			})
 			.then((response) => {
 				setCursor(response.data.pagination.cursor)
+				console.log('videoList', response.data.data)
+				console.log(
+					'LAST videoList',
+					response.data.data[response.data.data.length - 1]?.id
+				)
 				setVideoList(response.data.data)
 			})
 			.catch((err) => console.log(err))

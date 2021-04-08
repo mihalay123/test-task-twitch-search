@@ -5,6 +5,8 @@ export default function Button(props) {
 	return (
 		<button onClick={onClickFunction} className={style}>
 			{text}
+			{props.children}
 		</button>
 	)
 }
+4
