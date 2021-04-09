@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React from 'react'
 
 import styles from '../css/Home.module.css'
 import TextField from './TextField'
@@ -9,7 +9,12 @@ import { getVideoData } from '../pages/api/twitch'
 import Link from 'next/link'
 
 export default function Header(props) {
-	const { setSearchLine, setPage, setSearchButtonClicked } = props
+	const {
+		setSearchLine,
+		setPage,
+		setSearchButtonClicked,
+		showFavoriteButton,
+	} = props
 	const router = useRouter()
 
 	const onSearchButton = () => {
@@ -25,23 +30,36 @@ export default function Header(props) {
 		setSearchLine(event.target.value)
 	}
 
+	const onKeyDown = (event) => {
+		if (event.key === 'Enter') {
+			event.preventDefault()
+			event.stopPropagation()
+			onSearchButton()
+		}
+	}
+
 	return (
 		<div className={styles.header}>
 			<TextField
 				handler={handleFields}
 				style={styles['header-text-field']}
 				placeholder="Введите название канала"
+				onKeyDown={onKeyDown}
 			/>
 			<Button
 				text="Поиск"
 				onClickFunction={onSearchButton}
 				style={styles['header-button']}
 			/>
-			<Button
-				text="Избранное"
-				onClickFunction={onFavoritesButton}
-				style={styles['header-button']}
-			></Button>
+			{showFavoriteButton ? (
+				<Button
+					text="Избранное"
+					onClickFunction={onFavoritesButton}
+					style={styles['header-button']}
+				></Button>
+			) : (
+				<div></div>
+			)}
 		</div>
 	)
 }

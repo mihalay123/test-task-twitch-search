@@ -10,7 +10,7 @@ import {
 } from '../pages/api/favorutesApi'
 
 export default function VideoItem(props) {
-	const { videoParams, style } = props
+	const { videoParams } = props
 
 	const [isFavorite, setFavorite] = useState(
 		getFavoriteList().includes(videoParams.id)
@@ -30,16 +30,22 @@ export default function VideoItem(props) {
 		}
 	}
 
+	const titleArrayOfWords = videoParams.title.split(' ')
+	const prerviewTitle = `${titleArrayOfWords.slice(0, 10).join(' ')}...`
+
 	return (
-		<div className={style}>
+		<div className={styles['video-box-item']}>
 			<a href={videoParams.url}>
-				<img src={imgURL} alt={videoParams.title} />
+				<img src={imgURL} alt="Превью" />
 			</a>
-			{/* <Button
-				onClickFunction={onFavoriteButton}
-				style={styles['button-favorite']}
-				text={buttonText}
-			/> */}
+			<div className={styles.info}>
+				<h3>{prerviewTitle}</h3>
+				<Button
+					onClickFunction={onFavoriteButton}
+					style={styles['button-favorite']}
+					text={buttonText}
+				/>
+			</div>
 		</div>
 	)
 }

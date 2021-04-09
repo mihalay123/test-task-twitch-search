@@ -14,6 +14,10 @@
   flex-direction: row;
   width: 100%;
   background-color: rgb(24, 24, 27);
+  position: fixed;
+  top: 0;
+  z-index: 4;
+  min-height: 50px;
 }
 
 %header-element {
@@ -44,7 +48,7 @@
   color: white;
   border: 0px;
   border-radius: 6px;
-
+  font-weight: bold;
 
   &:hover {
     background-color: rgb(119, 44, 232);
@@ -62,42 +66,104 @@
   padding-bottom: 5px;
 }
 
-.main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin-top: 3rem;
+.header-label {
+  @extend %header-element;
+  @extend %primary-font;
+  color: rgb(239, 239, 241);
+  line-height: 2em;
 }
 
 $height: 150px;
 
+.main {
+  min-height: 90vh;
+}
+
 .video-box {
-  //padding: 5rem 0;
-  // flex: 1;
+  margin-top: 50px;
   display: flex;
   flex-direction: row;
-  justify-content: start;
-  align-items: stretch;
-  max-width: 70%;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 80%;
   flex-wrap: wrap;
-  
-  &:after {
-    display: block;
-    content: "";
-    margin: 10px;
-    flex: 999 999 auto;
-  }
 
   &-item {
-    flex: 0 0 auto;
+    width: 270px;
     height: 150px;
-    width: $height * 1.8;
-    max-width: 300px;
+    border-radius: 15px;
+    padding: 1.5rem;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    transition: 0.4s ease-out;
+    box-shadow: 0px 7px 10px rgba(black, 0.5);
     margin: 15px;
+        
+    &:hover {
+      transform: translateY(20);
+      
+      &:before {
+        opacity: 1;
+      }
+      
+      .info {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+      background: rgba(black, 0.6);
+      z-index: 2;
+      transition: 0.5s;
+      opacity: 0;
+    }
+		
+    a {
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 6px;
+      }
+    }
+    
+    .info {
+      position: relative;
+      z-index: 3;
+      color: white;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 0.5s;
+
+      h3 {
+        @extend %primary-font;
+      }
+
+      .button-favorite {
+        @extend %twitch-styled-button;
+
+        height: 30px;
+        cursor: pointer;
+        transition: 0.4s ease;
+        margin-left: 30px;
+      }
+    }
   }
 }
+
+
 
 .pagination {
   display: flex;

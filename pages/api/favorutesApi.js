@@ -5,7 +5,6 @@ const addFavorite = (id, setFavorite) => {
 	const previousFavorite = getFavoriteList()
 
 	const dataToSend = [...previousFavorite, id]
-	console.log(JSON.stringify(dataToSend))
 	localStorage.setItem('favoriteVids', JSON.stringify(dataToSend))
 	setFavorite(true)
 }

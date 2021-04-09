@@ -3,8 +3,8 @@ import axios from 'axios'
 import { ITEMS_PER_PAGE } from '../../constants/videoConstants'
 import { getFavoriteList } from './favorutesApi'
 
-const TWITCH_CLIENT_ID = 'bfk90li6afywwh5ik7uldi6vgc7jdk' //temp
-const TWITCH_CLIENT_SECRET = 'rh1ihn7halpl3y57m0ennmoya1v13c'
+//Must be in the process.env. But for convenience, I left it like this for now
+const TWITCH_CLIENT_ID = 'bfk90li6afywwh5ik7uldi6vgc7jdk'
 const TWITCH_ACCESS_TOKEN = 'Bearer pjq1pxeff0vfg2mq0kaz8idm3x8r74'
 
 const getChannelID = (channelName = '') => {
@@ -31,8 +31,6 @@ export const getVideoDataByChannelName = async ({
 	page,
 	channelName,
 }) => {
-	console.log('page', page)
-	console.log('cursor', cursor)
 	try {
 		const channelID = await getChannelID(channelName)
 		if (channelID === undefined)
@@ -51,11 +49,6 @@ export const getVideoDataByChannelName = async ({
 			})
 			.then((response) => {
 				setCursor(response.data.pagination.cursor)
-				console.log('videoList', response.data.data)
-				console.log(
-					'LAST videoList',
-					response.data.data[response.data.data.length - 1]?.id
-				)
 				setVideoList(response.data.data)
 			})
 			.catch((err) => console.log(err))

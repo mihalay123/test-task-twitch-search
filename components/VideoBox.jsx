@@ -14,15 +14,8 @@ export default function VideoBox(props) {
 	return (
 		<div className={styles['video-box']}>
 			{videoList.map((videoObj) => (
-				<VideoItem
-					videoParams={videoObj}
-					key={videoObj.id}
-					style={styles['video-box-item']}
-				/>
+				<VideoItem videoParams={videoObj} key={videoObj.id} />
 			))}
-			{/* {emptyBlocksArr.map((current, index) => (
-				<div className={styles['video-box-item-empty']} key={index}></div>
-			))} */}
 		</div>
 	)
 }
