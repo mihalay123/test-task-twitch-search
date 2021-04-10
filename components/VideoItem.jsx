@@ -35,17 +35,17 @@ export default function VideoItem(props) {
 
 	return (
 		<div className={styles['video-box-item']}>
+			<img src={imgURL} alt="Превью" />
 			<a href={videoParams.url}>
-				<img src={imgURL} alt="Превью" />
+				<div className={styles.info}>
+					<h3>{prerviewTitle}</h3>
+					<Button
+						onClickFunction={onFavoriteButton}
+						style={styles['button-favorite']}
+						text={buttonText}
+					/>
+				</div>
 			</a>
-			<div className={styles.info}>
-				<h3>{prerviewTitle}</h3>
-				<Button
-					onClickFunction={onFavoriteButton}
-					style={styles['button-favorite']}
-					text={buttonText}
-				/>
-			</div>
 		</div>
 	)
 }

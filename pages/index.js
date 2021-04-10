@@ -39,6 +39,7 @@ export default function Home() {
 				setPage={setPage}
 				setSearchButtonClicked={setSearchButtonClicked}
 				showFavoriteButton={true}
+				searchLine={searchLine}
 			></Header>
 
 			<div className={styles.main}>

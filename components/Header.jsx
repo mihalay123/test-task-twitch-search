@@ -6,7 +6,6 @@ import Button from './Button'
 import { useRouter } from 'next/router'
 
 import { getVideoData } from '../pages/api/twitch'
-import Link from 'next/link'
 
 export default function Header(props) {
 	const {
@@ -14,6 +13,7 @@ export default function Header(props) {
 		setPage,
 		setSearchButtonClicked,
 		showFavoriteButton,
+		searchLine,
 	} = props
 	const router = useRouter()
 
@@ -45,6 +45,7 @@ export default function Header(props) {
 				style={styles['header-text-field']}
 				placeholder="Введите название канала"
 				onKeyDown={onKeyDown}
+				value={searchLine}
 			/>
 			<Button
 				text="Поиск"

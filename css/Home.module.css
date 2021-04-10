@@ -66,6 +66,9 @@
 
 .main {
   min-height: 90vh;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .video-box {
@@ -113,7 +116,7 @@
   transition: 0.5s;
   opacity: 0;
 }
-.video-box-item a img {
+.video-box-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -121,6 +124,7 @@
   top: 0;
   left: 0;
   border-radius: 6px;
+  color: white;
 }
 .video-box-item .info {
   position: relative;
